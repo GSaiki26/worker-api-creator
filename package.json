@@ -1,0 +1,23 @@
+{
+  "name": "tests",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Saiki <GSaiki26@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc; mkdir ./dist/proto; yarn run protoc",
+    "dev:protoc": "npx grpc_tools_node_protoc --plugin=protoc-gen-ts=./node_modules/.bin/protoc-gen-ts --ts_out=./src/proto --js_out=import_style=commonjs:./src/proto --grpc_out=grpc_js:./src/proto -I ./src/proto ./src/proto/*.proto",
+    "dev:prettier": "npx prettier -w src",
+    "protoc": "npx grpc_tools_node_protoc -I ./src/proto ./src/proto/*.proto --grpc_out=grpc_js:./dist/proto --js_out=import_style=commonjs:./dist/proto",
+    "start": "node ."
+  },
+  "dependencies": {
+    "@grpc/grpc-js": "^1.9.0",
+    "grpc_tools_node_protoc_ts": "^5.3.3",
+    "typescript": "^5.1.6"
+  },
+  "devDependencies": {
+    "@types/node": "^20.5.0",
+    "prettier": "^3.0.1"
+  }
+}
