@@ -5,4 +5,4 @@ services:
     container_name: cardchecker-client
     build: .
     env_file:
-      - new_worker.env
+      - ./worker.env

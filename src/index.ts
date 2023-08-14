@@ -11,6 +11,7 @@ const CARDID = process.env.CARDID!;
 const EMAIL = process.env.EMAIL!;
 const FIRSTNAME = process.env.FIRSTNAME!;
 const LASTNAME = process.env.LASTNAME!;
+const WORKER_API_URI = process.env.WORKER_API_URI!;
 
 const creds = grpc.ChannelCredentials.createSsl(
   readFileSync("./certs/ca.pem"),
@@ -19,7 +20,7 @@ const creds = grpc.ChannelCredentials.createSsl(
 );
 
 // Code
-const client = new services.WorkerServiceClient("worker-api", creds);
+const client = new services.WorkerServiceClient(WORKER_API_URI, creds);
 const req = new messages.CreateReq()
   .setCardid(CARDID)
   .setEmail(EMAIL)
